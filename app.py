@@ -10,16 +10,16 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 @app.route("/", methods=("GET","POST"))
 def index():
     if request.method == "POST":
-        movie_description = request.form["description"]
+        description = request.form["description"].capitalize()
         response = openai.Completion.create(
             model="text-davinci-003",
-            prompt=generate_prompt(movie_description),
+            prompt=generate_prompt(description),
             temperature=0.3,            
         )
-        
-        return redirect(url_for("index", result=response.choices[0].text))
+        return redirect(url_for("index", result=response.choices[0].text, test=description))
+    test = request.args.get("test")
     result = request.args.get("result")
-    return render_template("index.html", result=result)
+    return render_template("index.html", result=result, test=test)
 
 
 def generate_prompt(movie_description):
