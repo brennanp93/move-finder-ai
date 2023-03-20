@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No, Really, Name That Movie, Please?</title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='moviefavicon.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+  <body>
+    <main class="grid-box">
+      <div class="image">
+
+        <img
+          src="{{ url_for('static', filename='movie-projector.png') }}"
+          alt=""
+        />
+      </div>
+      <div class="title">
+        <h1 >
+          No, Really... <br />
+          Name That Movie, Please?
+        </h1>
+      </div>
+      <form action="/" method="post" class="form">
+        <textarea
+          rows="6"
+          cols="50"
+          type="text"
+          name="description"
+          placeholder="Enter a movie description"
+          required
+        ></textarea>
+        <div class="button">
+          <button type="submit" value="Go">Go</button>
+        </div>
+      </form>
+      {% if result %}
+      <div class="result">
+        <h3>You're probably thinking of: <br /> <hr>{{result}}</h3>
+      </div>
+      {% endif %}
+    </main>
+  </body>
+</html>
