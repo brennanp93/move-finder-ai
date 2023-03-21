@@ -45,6 +45,7 @@ main {
 input{
   width: 225px;
   margin-bottom: 10%;
+  font-size: 17px;
 }
 /* textarea {
   background-color: white;
