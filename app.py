@@ -1,10 +1,10 @@
 import os
 
 import openai
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, session
 
 app = Flask(__name__)
-
+app.secret_key = "tuna"
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route("/", methods=("GET","POST"))
@@ -16,10 +16,12 @@ def index():
             prompt=generate_prompt(description),
             temperature=0.3,            
         )
-        return redirect(url_for("index", result=response.choices[0].text, test=description))
-    test = request.args.get("test")
+        session['input'] = description
+       
+        print(input)
+        return redirect(url_for("index", result=response.choices[0].text))
     result = request.args.get("result")
-    return render_template("index.html", result=result, test=test)
+    return render_template("index.html", result=result,  input = session["input"])
 
 
 def generate_prompt(movie_description):
