@@ -14,7 +14,7 @@ def index():
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=generate_prompt(description),
-            temperature=0.8,            
+            temperature=0.3,            
         )
         session['input'] = description
        
@@ -31,5 +31,7 @@ Description: Movie where Leonardo Dicaprio plays a con artist
 Movie: Catch Me If You Can. Released in 2002
 Description: Movie where Simon Pegg fights zombies with his friend.
 Movie: Shaun of the Dead. Realsed in 2004
+Description: Movie where a weird guy takes over a tv station in the 80's
+Movie: UHF. Released in 1989
 Description: {}
 Movie:""".format(movie_description.capitalize())
