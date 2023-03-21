@@ -16,12 +16,12 @@ def index():
             prompt=generate_prompt(description),
             temperature=0.3,            
         )
-        session['input'] = description
+        # session['input'] = description
        
-        print(input)
+
         return redirect(url_for("index", result=response.choices[0].text))
     result = request.args.get("result")
-    return render_template("index.html", result=result,  input = session["input"])
+    return render_template("index.html", result=result,  )
 
 
 def generate_prompt(movie_description):
