@@ -14,7 +14,7 @@ def index():
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=generate_prompt(description),
-            temperature=0.3,            
+            temperature=0.8,            
         )
         session['input'] = description
        

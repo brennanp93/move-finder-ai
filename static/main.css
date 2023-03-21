@@ -12,7 +12,7 @@ body {
 }
 
 .title {
-  grid-row: 2/3;
+  grid-row: 2/4;
   display: grid;
   place-content: center;
 }
@@ -28,6 +28,7 @@ form {
 }
 h2,
 h3,
+h4,
 h5 {
   text-align: center;
 }
@@ -40,12 +41,17 @@ main {
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: 1fr;
 }
-textarea {
+
+input{
+  width: 225px;
+  margin-bottom: 10%;
+}
+/* textarea {
   background-color: white;
   border: solid grey 1px;
   border-radius: 5px;
   margin-bottom: 1%;
-}
+} */
 button {
   background-color: rgb(189, 186, 186);
   border: solid rgb(199, 197, 197) 1px;
@@ -76,7 +82,7 @@ button {
   button {
     text-align: center;
   }
-  textarea {
+  /* textarea {
     width: 100%;
-  }
+  } */
 }

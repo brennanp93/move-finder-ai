@@ -27,28 +27,28 @@
           No, Really... <br />
           Name That Movie, Please?
         </h1>
-      </div>
+      
       <form action="/" method="post" class="form">
-        <textarea
-          rows="6"
-          cols="50"
+        <input
           type="text"
           name="description"
           placeholder="Enter a movie description"
+          autocomplete="off"
           required
-        ></textarea>
+        ></input>
         <div class="button">
           <button type="submit" value="Go">Go</button>
         </div>
       </form>
+    </div>
       {% if result %}
       <div class="result">
-        <h5>You entered:"{{input}}"</h5>
-        <h3>
+        <h3>You entered:"{{input}}"</h3>
+        <h2>
           You're probably thinking of: <br />
           <hr />
           {{result}}
-        </h3>
+        </h2>
       </div>
       {% endif %}
     </main>
