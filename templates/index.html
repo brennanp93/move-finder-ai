@@ -16,39 +16,34 @@
   </head>
   <body>
     <main class="grid-box">
-      <div class="image">
+      <div class="image-title">
         <img
           src="{{ url_for('static', filename='movie-projector.png') }}"
           alt=""
         />
-      </div>
-      <div class="title">
         <h1>
           No, Really... <br />
           Name That Movie, Please?
         </h1>
-      
+      </div>
       <form action="/" method="post" class="form">
-        <input
-          type="text"
-          name="description"
-          placeholder="Enter a movie description"
-          autocomplete="off"
-          required
-        ></input>
-        <div class="button">
-          <button type="submit" value="Go">Go</button>
+        <div class="form-button">
+          <input
+            type="text"
+            name="description"
+            placeholder="Enter a movie description..."
+            autocomplete="off"
+            required
+          />
+          <div class="button">
+            <button type="submit" value="Go">Go</button>
+          </div>
         </div>
       </form>
-    </div>
       {% if result %}
-      <div class="result">
-        <h3>You entered:"{{input}}"</h3>
-        <h2>
-          You're probably thinking of: <br />
-          <hr />
-          {{result}}
-        </h2>
+      <div class="input-result">
+        <h3>Input: <br />"{{input}}"</h3>
+        <h2>Result: <br />{{result}}</h2>
       </div>
       {% endif %}
     </main>
