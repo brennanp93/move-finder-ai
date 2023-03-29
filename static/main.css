@@ -40,6 +40,9 @@ form {
 button {
   margin: 5px;
   width: 50px;
+  background-color: rgb(189, 186, 186);
+  border: solid rgb(199, 197, 197) 1px;
+  border-radius: 5px;
 }
 
 .input-result {
@@ -69,7 +72,7 @@ input {
     place-content: center;
     grid-row: 2/3;
   }
-  
+
   form {
     grid-row: 3/4;
   }
