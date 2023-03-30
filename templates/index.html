@@ -15,7 +15,14 @@
     />
   </head>
   <body>
-    <main class="grid-box">
+    <div class="reset-button">
+      {% if result %}
+      <a href="{{url_for('clear_prompt')}}">
+        <img src="{{ url_for('static', filename='reset.png') }}" alt="" />
+      </a>
+      {% endif %}
+    </div>
+    <main class="{% if result %}grid-box{% endif %}">
       <div class="image-title">
         <img
           src="{{ url_for('static', filename='movie-projector.png') }}"
@@ -46,13 +53,16 @@
         <h3>Your Description: <br />"{{input}}"</h3>
         <h2>You might be thinking of... <br />{{result}}</h2>
         <a
-        href="{{url_for('share_twitter')}}"
-        target="_blank"
-        class="twitter-button"
+          href="{{url_for('share_twitter')}}"
+          target="_blank"
+          class="twitter-button"
         >
-        <img src="{{ url_for('static', filename='twitterbig.png') }}" alt="" />
-      </a>
-    </div>
+          <img
+            src="{{ url_for('static', filename='twitterbig.png') }}"
+            alt=""
+          />
+        </a>
+      </div>
       {% endif %}
     </main>
   </body>

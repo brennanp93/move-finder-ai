@@ -36,6 +36,12 @@ def share_twitter():
     return redirect(tweet_url)
 
 
+@app.route("/")
+def clear_prompt():
+
+    return redirect("/")
+
+
 def generate_prompt(movie_description):
     return """Help me find out the name of a movie based on a brief description. 
 
