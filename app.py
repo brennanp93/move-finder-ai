@@ -30,9 +30,9 @@ def index():
 @app.route('/share/twitter')
 def share_twitter():
     user_input=session['user_input']
-    output=session['output']
+    output=session['output'].lstrip()
     url='https://movie-finder-ai.herokuapp.com/'
-    text=f'Wow! I input:\n"{user_input}"\nAnd it correctly guessed:\n"{output}"\nSee if you can stump it!'
+    text=f'Amazing! I described a movie as:\n"{user_input}" \nand the AI correctly guessed it was:\n{output} \nCan you challenge its movie guessing skills?\nTry it now at'
     tweet_url=f'https://twitter.com/intent/tweet?url={url}&text={text}'
     return redirect(tweet_url)
 
@@ -49,3 +49,4 @@ Description: Jean reno and Jon Voight are bad guys.
 Movie: Mission: Impossible. Released in 1996.
 Description: {}
 Movie:""".format(movie_description.capitalize())
+
