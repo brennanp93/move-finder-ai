@@ -13,32 +13,33 @@ def index():
     if request.method == "POST":
         description = request.form["description"].capitalize()
         response = openai.Completion.create(
-            model="text-davinci-003",
+            model="gpt-3.5-turbo-instruct",
             prompt=generate_prompt(description),
             temperature=0.7,
         )
 
-        return redirect(url_for("index", result=response.choices[0].text, input=description))
+        return redirect(
+            url_for("index", result=response.choices[0].text, input=description)
+        )
     result = request.args.get("result")
     input = request.args.get("input")
-    session['user_input'] = input
-    session['output'] = result
+    session["user_input"] = input
+    session["output"] = result
     return render_template("index.html", result=result, input=input)
 
 
-@app.route('/share/twitter')
+@app.route("/share/twitter")
 def share_twitter():
-    user_input = session['user_input']
-    output = session['output'].lstrip()
-    url = 'https://movie-finder-ai.herokuapp.com/'
+    user_input = session["user_input"]
+    output = session["output"].lstrip()
+    url = "https://movie-finder-ai.herokuapp.com/"
     text = f'Amazing! I described a movie as:\n"{user_input}" \nand the AI correctly guessed it was:\n{output} \nCan you challenge its movie guessing skills?\nTry it now at'
-    tweet_url = f'https://twitter.com/intent/tweet?url={url}&text={text}'
+    tweet_url = f"https://twitter.com/intent/tweet?url={url}&text={text}"
     return redirect(tweet_url)
 
 
 @app.route("/")
 def clear_prompt():
-
     return redirect("/")
 
 
@@ -54,4 +55,6 @@ Movie: UHF. Released in 1989.
 Description: Jean reno and Jon Voight are bad guys.
 Movie: Mission: Impossible. Released in 1996.
 Description: {}
-Movie:""".format(movie_description.capitalize())
+Movie:""".format(
+        movie_description.capitalize()
+    )
